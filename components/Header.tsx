@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <div className="w-full top-0 left-0 z-50 px-3 sticky h-0">
-      <section className="container flex items-center h-[80px] mx-auto justify-between">
+      <section className="container flex items-center h-[80px] mx-auto justify-between ">
         <h1 className="text-3xl text-white flex items-center">
           <Link href="/">
             <svg
@@ -11,41 +11,37 @@ export default function Header() {
               width="131.298"
               height="41.579"
               viewBox="0 0 131.298 41.579"
+              className="mix-blend-difference fill-white"
             >
               <path
                 id="패스_41"
                 data-name="패스 41"
                 d="M14.308,30.361C9.574,30.382,6.439,34,6.439,40.419c0,6.565,3.177,10.037,7.827,10.058,3.472-.021,6.081-1.915,6.691-5.218l6.4.042c-.694,5.639-5.429,10.773-13.172,10.773C6.039,56.074,0,50.33,0,40.419c0-9.952,6.144-15.655,14.182-15.655,7.028,0,12.33,4.019,13.172,11.026h-6.4c-.5-3.367-3.093-5.408-6.649-5.429"
                 transform="translate(0 -14.494)"
-                fill="#fff"
               />
               <path
                 id="패스_42"
                 data-name="패스 42"
                 d="M80.567,25.832H86.88V38.456h13.214V25.832h6.355V56.3h-6.355V43.675H86.88V56.3H80.567Z"
                 transform="translate(-48.795 -15.141)"
-                fill="#fff"
               />
               <path
                 id="패스_43"
                 data-name="패스 43"
                 d="M154.839,56.3,165.4,25.832h8.122L184.044,56.3h-6.775l-2.294-7.028H163.95L161.656,56.3Zm18.537-11.951-3.808-11.657h-.211l-3.808,11.657Z"
                 transform="translate(-93.777 -15.141)"
-                fill="#fff"
               />
               <path
                 id="패스_44"
                 data-name="패스 44"
                 d="M263.065,56.3h-5.471L244.211,36.942h-.252V56.3h-6.313V25.832H243.2L256.5,45.19h.295V25.832h6.27Z"
                 transform="translate(-143.928 -15.141)"
-                fill="#fff"
               />
               <path
                 id="패스_45"
                 data-name="패스 45"
                 d="M315.118,89.724a3.455,3.455,0,0,1,3.535-3.493,3.511,3.511,0,0,1,3.493,3.493,3.548,3.548,0,0,1-3.493,3.535,3.49,3.49,0,0,1-3.535-3.535"
                 transform="translate(-190.847 -51.721)"
-                fill="#fff"
               />
               <path
                 id="합치기_1"

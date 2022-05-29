@@ -15,9 +15,13 @@
     "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
     "Malgun Gothic", sans-serif;
 }
-.asdf {
-  border: solid 1px red;
-  background-color: #ddd;
+html,
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  transition: all 0.3s;
 }
 /*cursor css*/
 .main-cursor,
