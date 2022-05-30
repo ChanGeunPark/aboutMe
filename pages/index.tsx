@@ -7,6 +7,8 @@ import CustomCursorManager from "../components/CustomCursor/context/manager";
 import Header from "../components/Header";
 import { Mainbanner3d } from "../components/Mainbanner3d";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 // Import Swiper styles
 import "swiper/css/grid";
 import "swiper/css/pagination";
@@ -15,8 +17,14 @@ import "swiper/css/effect-creative";
 
 // import required modules
 import { Grid, Pagination, Navigation, EffectCreative } from "swiper";
+import { useEffect, useRef } from "react";
 
 const Home: NextPage = () => {
+  const scrollContainer = useRef(null);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const height = scrollContainer.current;
+  }, []);
   return (
     <CustomCursorManager>
       <CustomCursor />
@@ -71,15 +79,14 @@ const Home: NextPage = () => {
         <span className="block w-full h-[200px] bg-gradient-to-t to-transparent from-[#28292E] absolute left-0 bottom-0 pointer-events-none"></span>
       </article>
 
-      <article className="bg-[#28292D] relative px-3">
-        <section className="container mx-auto grid grid-cols-2 gap-12">
+      <article className="bg-[#28292D] relative px-3 flex items-center">
+        <section className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="flex justify-center">
             {/* 내 얼굴 */}
             <div className="relative  -translate-y-[20%]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="564.195"
-                height="781.168"
+                className="w-[560px] max-w-full"
                 viewBox="0 0 564.195 781.168"
               >
                 <path
@@ -107,7 +114,7 @@ const Home: NextPage = () => {
             </div>
           </div>
 
-          <div className="pt-12 text-zinc-300">
+          <div className="pt-12 text-zinc-300 relative z-10">
             <h1 className="text-[#FFEEEE] font-extrabold text-6xl">
               <span className="text-[#28292D] about">ABOUT</span>
               <span className="ml-3">ME.</span>
@@ -285,7 +292,7 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <span className="absolute right-0 top-1/2 -translate-y-1/2">
+        <span className="absolute right-0 top-1/2 -translate-y-1/2 z-0">
           <img
             src="https://imagedelivery.net/anvL-_ABM0Z5KQo2YmJX4g/2df8ffb4-eb06-4938-b481-5d40a7db5600/public"
             alt="background"
@@ -301,7 +308,7 @@ const Home: NextPage = () => {
         </span>
       </article>
 
-      <article className="min-h-screen py-12 bg-[#28292D] relative px-3">
+      <article className="min-h-screen py-12 bg-[#28292D] relative px-3 flex items-center">
         <section className="container mx-auto flex">
           <div className="w-[200px]">
             <div className="flex items-start">
@@ -617,7 +624,7 @@ const Home: NextPage = () => {
         </span>
       </article>
 
-      <article className="py-6 ">
+      <article className="py-6 px-3">
         <div className="container mx-auto">
           <h2 className="font-bold text-3xl">다양한 도전을 하고있습니다.</h2>
         </div>
