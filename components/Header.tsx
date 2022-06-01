@@ -1,10 +1,29 @@
 import Link from "next/link";
+import { useContext, useEffect, useState } from "react";
+import CustomCursorContext from "./CustomCursor/context/CustomCursorContext";
+import { cls } from "../ilbs/utils";
+import { gsap } from "gsap";
 
 export default function Header() {
+  const { setType } = useContext(CustomCursorContext);
+  const executeScroll = () => {};
+  const [open, setOpen] = useState(false); //메뉴오픈
+  const menuOpen = () => {
+    open ? setOpen(false) : setOpen(true);
+  };
+
   return (
     <div className="w-full top-0 left-0 z-50 px-3 sticky h-0">
       <section className="container flex items-center h-[80px] mx-auto justify-between ">
-        <h1 className="text-3xl text-white flex items-center">
+        <h1
+          className="text-3xl text-white flex items-center"
+          onMouseOver={() => {
+            setType("link");
+          }}
+          onMouseLeave={() => {
+            setType("default");
+          }}
+        >
           <Link href="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +112,16 @@ export default function Header() {
           </span>
         </h1>
 
-        <button type="button">
+        <button
+          type="button"
+          onClick={menuOpen}
+          onMouseOver={() => {
+            setType("link");
+          }}
+          onMouseLeave={() => {
+            setType("default");
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-8 w-8 stroke-white"
@@ -111,6 +139,65 @@ export default function Header() {
         </button>
         {/* MENU BUTTON */}
       </section>
+      <div
+        className={cls(
+          "w-[450px] h-screen fixed right-0 top-0 bg-[#101010] p-12 flex items-center justify-start z-50 transition-all ease-in-out duration-500",
+          !open ? "-mr-[450px]" : "-mr-0"
+        )}
+      >
+        <button
+          type="button"
+          onClick={menuOpen}
+          onMouseEnter={() => {
+            setType("link");
+          }}
+          onMouseLeave={() => {
+            setType("default");
+          }}
+          className="absolute left-12 top-12"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-10 w-10 stroke-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+
+        <nav className="w-full grid grid-cols-1 text-left space-y-6">
+          <button
+            onClick={executeScroll}
+            className="text-3xl font-bold text-zinc-300 hover:text-orange-200 transition-colors text-left"
+          >
+            HOME
+          </button>
+          <button className="text-3xl font-bold text-zinc-300 hover:text-orange-200 transition-colors text-left">
+            AOUBT ME
+          </button>
+          <button className="text-3xl font-bold text-zinc-300 hover:text-orange-200 transition-colors text-left">
+            EXPERIENCE
+          </button>
+          <button className="text-3xl font-bold text-zinc-300 hover:text-orange-200 transition-colors text-left">
+            STORY
+          </button>
+          <button className="text-3xl font-bold text-zinc-300 hover:text-orange-200 transition-colors text-left">
+            CONTACT ME
+          </button>
+        </nav>
+
+        <p className=" absolute left-12 bottom-12 text-zinc-400 text-sm">
+          ©2022 PARKCHANGEUN <br />
+          ALL RIGHTS RESERVED
+        </p>
+      </div>
     </div>
   );
 }
