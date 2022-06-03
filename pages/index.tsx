@@ -10,7 +10,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 // Import Swiper styles
 
-import { portfolioData1, portfolioData2 } from "./data/portfolio"; //포트폴리오 데이터
+import { portfolioData1, portfolioData2 } from "../data/portfolio";
 
 // import required modules
 import { useContext, useEffect, useRef, useState } from "react";

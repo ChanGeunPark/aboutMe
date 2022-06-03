@@ -1,4 +1,4 @@
-export const experience = [
+export let experience = [
   {
     imgUrl1:
       "https://imagedelivery.net/anvL-_ABM0Z5KQo2YmJX4g/9319b3ef-9485-4d58-6d46-bb91f2b69000/public",

@@ -1,4 +1,4 @@
-export const portfolioData1 = [
+export let portfolioData1 = [
   { src: "https://www.eduedu.kr/theme/edu/img/portfolio1.png" },
   { src: "https://www.eduedu.kr/theme/edu/img/portfolio2.png" },
   { src: "https://www.eduedu.kr/theme/edu/img/portfolio3.png" },
@@ -13,7 +13,7 @@ export const portfolioData1 = [
   { src: "https://www.eduedu.kr/theme/edu/img/portfolio6.png" },
 ];
 
-export const portfolioData2 = [
+export let portfolioData2 = [
   { src: "https://www.eduedu.kr/theme/edu/img/portfolio7.png" },
   { src: "https://www.eduedu.kr/theme/edu/img/portfolio8.png" },
   { src: "https://www.eduedu.kr/theme/edu/img/portfolio9.png" },

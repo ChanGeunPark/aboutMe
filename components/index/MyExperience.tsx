@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/effect-creative";
 
 import { Grid, Pagination, Navigation, EffectCreative } from "swiper";
-import { experience } from "../../pages/data/myexperience"; //my exoeruebce
+import { experience } from "../../data/myexperience";
 import Link from "next/link";
 
 export default function MyExperience() {

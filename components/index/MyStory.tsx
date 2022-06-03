@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function MyStory() {
+const MyStory = () => {
   return (
     <article className="min-h-screen flex items-center overflow-hidden relative py-16 px-3">
       <div className="container mx-auto">
@@ -75,4 +75,6 @@ export default function MyStory() {
       </span>
     </article>
   );
-}
+};
+
+export default MyStory;
