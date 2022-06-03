@@ -1,16 +1,144 @@
 import Image from "next/image";
-
+import { gsap } from "gsap/dist/gsap";
+import { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 export default function AboutMe() {
+  const myFace = useRef(null);
+  const aboutMe = useRef<HTMLDivElement>(null);
+  gsap.registerPlugin(ScrollTrigger);
+
+  useEffect(() => {
+    gsap.to(myFace.current, {
+      scrollTrigger: {
+        trigger: aboutMe.current,
+        toggleActions: "restart none none none",
+        start: "top 80%",
+        end: "bottom bottom",
+        scrub: true,
+      },
+      strokeDashoffset: 0,
+    }); //얼굴 라인
+
+    gsap.fromTo(
+      aboutMe.current,
+      {
+        translateX: 50,
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        translateX: 0,
+        scrollTrigger: {
+          trigger: aboutMe.current,
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); // about me
+
+    gsap.fromTo(
+      ".aboutSubTitle",
+      {
+        translateX: 50,
+        opacity: 0,
+      },
+      {
+        delay: 0.1,
+        opacity: 1,
+        translateX: 0,
+        scrollTrigger: {
+          trigger: aboutMe.current,
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //aboutSubTitle
+
+    gsap.fromTo(
+      ".aboutIntro",
+      {
+        translateX: 50,
+        opacity: 0,
+      },
+      {
+        delay: 0.2,
+        opacity: 1,
+        translateX: 0,
+        scrollTrigger: {
+          trigger: aboutMe.current,
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //about Intro
+
+    gsap.fromTo(
+      ".aboutKeyword span",
+      {
+        opacity: 0,
+      },
+      {
+        stagger: 0.1,
+        delay: 0.3,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: aboutMe.current,
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //aboutKeyword
+
+    gsap.fromTo(
+      ".skillsTitle",
+      {
+        translateY: -50,
+        opacity: 0,
+      },
+      {
+        stagger: 0.03,
+        delay: 0.4,
+        opacity: 1,
+        translateY: 0,
+        scrollTrigger: {
+          trigger: aboutMe.current,
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //skills
+
+    gsap.fromTo(
+      ".skills span",
+      {
+        translateY: -50,
+        opacity: 0,
+      },
+      {
+        stagger: 0.03,
+        delay: 0.4,
+        opacity: 1,
+        translateY: 0,
+        scrollTrigger: {
+          trigger: aboutMe.current,
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //skills
+  }, []);
+
   return (
-    <article className="bg-[#28292D] relative px-3 flex items-center py-20">
+    <article className="bg-[#28292D] relative px-3 flex items-center py-20 aboutMeMain">
       <section className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="flex justify-center">
           {/* 내 얼굴 */}
-          <div className="relative  -mt-[20%]">
+          <div className="relative -mt-[20%] hover:drop-shadow-[0_0_5px_rgba(255,255,255,1)] duration-300 z-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-[400px] md:w-[560px] max-w-full"
+              className="face w-[400px] md:w-[560px] max-w-full stroke-2 transition-all duration-[4s] ease-in-out"
               viewBox="0 0 564.195 781.168"
+              ref={myFace}
             >
               <path
                 id="hat"
@@ -20,7 +148,6 @@ export default function AboutMe() {
                 fill="none"
                 stroke="#fee"
                 strokeMiterlimit="10"
-                strokeWidth="2"
               />
               <path
                 id="face"
@@ -30,7 +157,6 @@ export default function AboutMe() {
                 fill="none"
                 stroke="#fee"
                 strokeMiterlimit="10"
-                strokeWidth="2"
               />
             </svg>
             <span className="w-4 h-4 block rounded-full bg-white absolute top-0 -translate-y-1/2 right-[30%]"></span>
@@ -38,14 +164,17 @@ export default function AboutMe() {
         </div>
 
         <div className="pt-12 text-zinc-300 relative z-10">
-          <h1 className="text-[#FFEEEE] font-extrabold text-5xl md:text-6xl">
+          <h1
+            className="text-[#FFEEEE] font-extrabold text-5xl md:text-6xl"
+            ref={aboutMe}
+          >
             <span className="text-[#28292D] about">ABOUT</span>
             <span className="ml-3">ME.</span>
           </h1>
-          <h2 className="mt-9">
+          <h2 className="aboutSubTitle mt-9">
             배우고 경험하고 도전하고 싶은게 너무 많은 웹 개발자 박찬근입니다
           </h2>
-          <p className="mt-9 leading-relaxed">
+          <p className="aboutIntro mt-9 leading-relaxed">
             Design을 전공했습니다. 그러나 Front-end Developer로 일하고 있습니다{" "}
             <br className="hidden md:block" />
             저는 기존에 없었던 새로운 목표에 대한 도전을 즐기며{" "}
@@ -53,7 +182,7 @@ export default function AboutMe() {
             이전엔 없었던 창조적인 웹을 만드는데 관심이 많습니다
           </p>
 
-          <div className="flex space-x-3 mt-9">
+          <div className="aboutKeyword flex space-x-3 mt-9">
             <span className="inline-block px-6 py-2 border border-zinc-300 rounded-full">
               배움
             </span>
@@ -65,8 +194,8 @@ export default function AboutMe() {
             </span>
           </div>
           <div className="mt-9">
-            <h3 className="text-orange-400">EXPERIENCED SKILLS+</h3>
-            <div className="mt-3">
+            <h3 className="text-orange-400 skillsTitle">EXPERIENCED SKILLS+</h3>
+            <div className="skills mt-3">
               <span className="mr-2">
                 <Image
                   src={`https://imagedelivery.net/anvL-_ABM0Z5KQo2YmJX4g/6f11ac01-c930-4ab0-a172-6b92514fc000/avatar`}
@@ -232,6 +361,13 @@ export default function AboutMe() {
         />
         {/* background object dotted*/}
       </span>
+      <style>{`
+      .face{
+        stroke-dasharray:2100;
+        stroke-dashoffset:2100;
+      }
+      
+      `}</style>
     </article>
   );
 }

@@ -4,31 +4,215 @@ import "swiper/css/grid";
 import "swiper/css/pagination";
 import "swiper/css";
 import "swiper/css/effect-creative";
+import { gsap } from "gsap/dist/gsap";
+import { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import { Grid, Pagination, Navigation, EffectCreative } from "swiper";
 import { experience } from "../../data/myexperience";
 import Link from "next/link";
 
 export default function MyExperience() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useEffect(() => {
+    gsap.to(".years", {
+      opacity: 1,
+      scrollTrigger: {
+        trigger: ".years",
+        start: "top 80%",
+        toggleActions: "restart none none reverse",
+      },
+    }); //working years number
+
+    gsap.fromTo(
+      ".working span",
+      {
+        opacity: 0,
+        translateX: -50,
+      },
+      {
+        opacity: 1,
+        delay: 0.1,
+        translateX: 0,
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: ".years",
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //working years text
+
+    gsap.fromTo(
+      ".experienceTitle",
+      {
+        opacity: 0,
+        translateX: 50,
+      },
+      {
+        opacity: 1,
+        translateX: 0,
+        scrollTrigger: {
+          trigger: ".experienceTitle",
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //experienceTitle
+
+    gsap.fromTo(
+      ".expImg1",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        delay: 0.1,
+        scrollTrigger: {
+          trigger: ".experienceTitle",
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //experienceImg
+    gsap.fromTo(
+      ".expImg2",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: ".experienceTitle",
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //experienceImg
+
+    gsap.fromTo(
+      ".expTitle1",
+      {
+        translateX: 50,
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        translateX: 0,
+        delay: 0.3,
+        scrollTrigger: {
+          trigger: ".experienceTitle",
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //experiencetitle
+
+    gsap.fromTo(
+      ".expTitle2",
+      {
+        translateX: 50,
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        translateX: 0,
+        delay: 0.4,
+        scrollTrigger: {
+          trigger: ".experienceTitle",
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //experiencetitle
+
+    gsap.fromTo(
+      ".expIntro1",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        delay: 0.5,
+        scrollTrigger: {
+          trigger: ".experienceTitle",
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //experienceIntro
+
+    gsap.fromTo(
+      ".expIntro2",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        delay: 0.6,
+        scrollTrigger: {
+          trigger: ".experienceTitle",
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //experienceIntro
+
+    gsap.fromTo(
+      ".expLink1",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        delay: 0.7,
+        scrollTrigger: {
+          trigger: ".experienceTitle",
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //experienceLink
+
+    gsap.fromTo(
+      ".expLink2",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        delay: 0.8,
+        scrollTrigger: {
+          trigger: ".experienceTitle",
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+        },
+      }
+    ); //experienceLink
+  }, []);
+
   return (
-    <article className="min-h-screen py-20 bg-[#28292D] relative px-3 flex items-center ">
+    <article className="min-h-screen py-20 bg-[#28292D] relative px-3 flex items-center experienceMain">
       <section className="container mx-auto flex flex-col lg:flex-row">
         <div className="flex flex-row lg:flex-col lg:w-[200px] lg:mb-0 mb-3">
-          <div className="flex items-start">
+          <div className="flex items-start years opacity-0">
             <h1 className="text-white font-extrabold text-7xl">1.5</h1>
             <span className="font-extrabold text-3xl text-white ml-2">+</span>
           </div>
-          <p className="text-zinc-400 ml-3 lg:ml-0 lg:mt-2 leading-normal lg:leading-relaxed">
-            Years <br />
-            Experience
+          <p className="working text-zinc-400 ml-3 lg:ml-0 lg:mt-2 leading-normal lg:leading-relaxed">
+            <span className="relative">Years</span>
             <br />
-            Working
+            <span>Experience</span>
+            <br />
+            <span>Working</span>
           </p>
         </div>
         {/* left layout */}
         <div className="w-full lg:w-[calc(100%-200px)]">
           <div className="text-[#FFEEEE] font-extrabold text-4xl md:text-6xl relative flex justify-between items-center">
-            <div className="flex items-center">
+            <div className="flex items-center experienceTitle">
               <span className="text-[#28292D] about">MY</span>
               <span className="ml-3">EXPERIENCE</span>
 
@@ -104,7 +288,7 @@ export default function MyExperience() {
                 {experience.map((experience, index) => (
                   <SwiperSlide key={index}>
                     <div className="w-full grid grid-cols-1 md:grid-cols-6 gap-6 rounded pb-9 border-b border-zinc-500">
-                      <div className="h-[240px] relative overflow-hidden rounded-lg md:col-span-2">
+                      <div className="h-[240px] relative overflow-hidden rounded-lg md:col-span-2 expImg1">
                         <Image
                           src={experience.imgUrl1}
                           layout="fill"
@@ -113,19 +297,19 @@ export default function MyExperience() {
                       </div>
                       <div className="md:col-span-4 flex flex-col h-full relative">
                         <div className="flex justify-between w-full">
-                          <h2 className="text-white font-semibold text-xl">
+                          <h2 className="text-white font-semibold text-xl expTitle1">
                             {experience.title1} <br />
                             {experience.title1_2}
                           </h2>
-                          <span className="text-zinc-400">
+                          <span className="text-zinc-400 expDays1">
                             {experience.days1}
                           </span>
                         </div>
-                        <p className="mt-6 text-zinc-400 leading-relaxed mb-12 md:mb-0">
+                        <p className="mt-6 text-zinc-400 leading-relaxed mb-12 md:mb-0 expIntro1">
                           {experience.intro1}
                           {/* 내용 */}
                         </p>
-                        <div className="text-white space-x-9 mt-10 absolute left-0 bottom-0">
+                        <div className="text-white space-x-9 mt-10 absolute left-0 bottom-0 expLink1">
                           {experience.siteUrl1 ? (
                             <Link href={experience.siteUrl1}>VIEW SITE +</Link>
                           ) : (
@@ -141,7 +325,7 @@ export default function MyExperience() {
                     </div>
 
                     <div className="w-full grid grid-cols-1 md:grid-cols-6 gap-6 rounded pt-9 pb-3">
-                      <div className="h-[240px] relative overflow-hidden rounded-lg md:col-span-2">
+                      <div className="h-[240px] relative overflow-hidden rounded-lg md:col-span-2 expImg2">
                         <Image
                           src={experience.imgUrl2}
                           layout="fill"
@@ -150,19 +334,19 @@ export default function MyExperience() {
                       </div>
                       <div className="md:col-span-4 flex flex-col h-full relative">
                         <div className="flex justify-between w-full">
-                          <h2 className="text-white font-semibold text-xl">
+                          <h2 className="text-white font-semibold text-xl expTitle2">
                             {experience.title2} <br />
                             {experience.title2_2}
                           </h2>
-                          <span className="text-zinc-400">
+                          <span className="text-zinc-400 expDays2">
                             {experience.days2}
                           </span>
                         </div>
-                        <p className="mt-6 text-zinc-400 leading-relaxed mb-12 md:mb-0">
+                        <p className="mt-6 text-zinc-400 leading-relaxed mb-12 md:mb-0 expIntro2">
                           {experience.intro2}
                           {/* 내용 */}
                         </p>
-                        <div className="text-white space-x-9 mt-10 absolute left-0 bottom-0">
+                        <div className="text-white space-x-9 mt-10 absolute left-0 bottom-0 expLink2">
                           {experience.siteUrl2 ? (
                             <Link href={experience.siteUrl2}>VIEW SITE +</Link>
                           ) : (

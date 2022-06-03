@@ -40,13 +40,18 @@ const Home: NextPage = () => {
         <CustomCursorManager>
           <CustomCursor />
           <Header />
-          <article className="h-screen w-full relative flex-col items-center justify-center bg-[#28292D] hidden md:flex">
-            <span className="w-full block absolute top-0 left-0 bg-gradient-to-t to-zinc-900 from-transparent h-[200px] pointer-events-none"></span>
-
+          <article
+            id="mainBanner"
+            className="h-screen w-full relative flex-col items-center justify-center bg-[#28292D] hidden md:flex"
+          >
+            <span className="w-full block absolute top-0 left-0 bg-gradient-to-t to-zinc-900 from-transparent h-[200px] pointer-events-none z-20"></span>
+            <span className="3dLoading absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-zinc-300 text-4xl">
+              3D Loading...
+            </span>
             <Mainbanner3d />
             <section className="container  mx-auto h-full absolute  pointer-events-none">
               <div className="w-full h-full relative">
-                <div className="flex items-center absolute right-0 translate-x-[40%] rotate-90 z-10 bottom-1/4">
+                <div className="flex items-center absolute right-0 translate-x-[40%] rotate-90 z-20 bottom-1/4">
                   <span className="text-zinc-400 mr-2">Park Chan Geun</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -84,10 +89,10 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </section>
-            <p className="text-zinc-500 absolute left-0 translate-y-28 text-center w-full pointer-events-none">
+            <p className="text-zinc-500 absolute left-0 translate-y-28 text-center w-full pointer-events-none z-20">
               배우고 경험하고 도전하고 싶은게 너무 많은 개발자 박찬근입니다
             </p>
-            <span className="block w-full h-[200px] bg-gradient-to-t to-transparent from-[#28292E] absolute left-0 bottom-0 pointer-events-none"></span>
+            <span className="block w-full h-[200px] bg-gradient-to-t to-transparent from-[#28292E] absolute left-0 bottom-0 pointer-events-none z-20"></span>
           </article>
 
           <AboutMe />
@@ -95,7 +100,7 @@ const Home: NextPage = () => {
 
           <MyStory />
 
-          <article className="py-6">
+          <article className="py-6 storyMain2">
             <div className="container mx-auto">
               <h2 className="font-bold text-3xl px-3 md:px-0">
                 다양한 도전을 하고있습니다.
@@ -252,7 +257,20 @@ const Home: NextPage = () => {
           border:solid 5px #ddd;
       }
 
-
+      .3dLoading{
+        animation:3dLoading 3s linear infinite;
+      }
+      @keyframes 3dLoading {
+        0%{
+          opacity:0;
+        }
+        50%{
+          opacity:1;
+        }
+        100%{
+          opacity:0;
+        }
+      }
       `}</style>
         </CustomCursorManager>
       </div>

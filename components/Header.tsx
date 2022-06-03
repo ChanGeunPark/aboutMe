@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import CustomCursorContext from "./CustomCursor/context/CustomCursorContext";
 import { cls } from "../ilbs/utils";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 export default function Header() {
   const { setType } = useContext(CustomCursorContext);
@@ -12,11 +13,67 @@ export default function Header() {
     open ? setOpen(false) : setOpen(true);
   };
 
+  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    gsap.to(".homeMenu", {
+      scrollTrigger: {
+        trigger: "#mainBanner",
+        end: "90% top",
+        toggleClass: { targets: ".homeMenu", className: "active" },
+      },
+    });
+
+    gsap.to(".aboutMeMenu", {
+      scrollTrigger: {
+        trigger: ".aboutMeMain",
+        start: "top 10%",
+        end: "90% top",
+        toggleClass: { targets: ".aboutMeMenu", className: "active" },
+      },
+    });
+
+    gsap.to(".experienceMenu", {
+      scrollTrigger: {
+        trigger: ".experienceMain",
+        start: "top 10%",
+        end: "90% top",
+        toggleClass: { targets: ".experienceMenu", className: "active" },
+      },
+    });
+
+    gsap.to(".storyMenu", {
+      scrollTrigger: {
+        trigger: ".storyMain",
+        start: "top 10%",
+        end: "90% top",
+        toggleClass: { targets: ".storyMenu", className: "active" },
+      },
+    });
+    gsap.to(".storyMenu", {
+      scrollTrigger: {
+        trigger: ".storyMain2",
+        start: "top 10%",
+        end: "90% top",
+        toggleClass: { targets: ".storyMenu", className: "active" },
+      },
+    });
+    gsap.to(".contactMeMenu", {
+      scrollTrigger: {
+        trigger: "#contactMeMain",
+        start: "top 10%",
+        end: "90% top",
+        toggleClass: { targets: ".contactMeMenu", className: "active" },
+      },
+    });
+
+    //aboutMeMain
+  }, []);
+
   return (
-    <div className="w-full top-0 left-0 z-50 px-3 sticky h-0">
-      <section className="container flex items-center h-[80px] mx-auto justify-between ">
+    <div className="w-full top-0 left-0 z-50 px-3 fixed h-0">
+      <section className="container flex items-center h-[80px] mx-auto justify-between relative z-50">
         <h1
-          className="text-3xl text-white flex items-center"
+          className="text-3xl text-white flex items-center mainLogo"
           onMouseOver={() => {
             setType("link");
           }}
@@ -172,23 +229,23 @@ export default function Header() {
           </svg>
         </button>
 
-        <nav className="w-full grid grid-cols-1 text-left space-y-6">
+        <nav className="w-full grid grid-cols-1 text-left space-y-6 menus">
           <button
             onClick={executeScroll}
-            className="text-3xl font-bold text-zinc-300 hover:text-orange-200 transition-colors text-left"
+            className="homeMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left active"
           >
             HOME
           </button>
-          <button className="text-3xl font-bold text-zinc-300 hover:text-orange-200 transition-colors text-left">
+          <button className="aboutMeMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left">
             AOUBT ME
           </button>
-          <button className="text-3xl font-bold text-zinc-300 hover:text-orange-200 transition-colors text-left">
+          <button className="experienceMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left">
             EXPERIENCE
           </button>
-          <button className="text-3xl font-bold text-zinc-300 hover:text-orange-200 transition-colors text-left">
+          <button className="storyMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left">
             STORY
           </button>
-          <button className="text-3xl font-bold text-zinc-300 hover:text-orange-200 transition-colors text-left">
+          <button className="contactMeMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left">
             CONTACT ME
           </button>
         </nav>
@@ -198,6 +255,14 @@ export default function Header() {
           ALL RIGHTS RESERVED
         </p>
       </div>
+
+      <style>{`
+      .menus button.active{
+        padding:10px;
+        background-color: #ff9800;
+        color:#0f0f0f;
+      }
+      `}</style>
     </div>
   );
 }
