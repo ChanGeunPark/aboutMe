@@ -7,7 +7,7 @@ import CustomCursorManager from "../components/CustomCursor/context/manager";
 import Header from "../components/Header";
 import { Mainbanner3d } from "../components/Mainbanner3d";
 import { gsap } from "gsap";
-// Import Swiper styles
+// Import Swiper styless
 
 import { portfolioData1, portfolioData2 } from "../data/portfolio";
 
