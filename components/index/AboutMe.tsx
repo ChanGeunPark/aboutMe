@@ -2,10 +2,11 @@ import Image from "next/image";
 import { gsap } from "gsap/dist/gsap";
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger); //nextjs에선 build했을때 플러그인을 찾을수 없다. 버전 업그레이드 후 export밖으로 빼야한다.
+
 export default function AboutMe() {
   const myFace = useRef(null);
   const aboutMe = useRef<HTMLDivElement>(null);
-  gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
     gsap.to(myFace.current, {
@@ -24,6 +25,7 @@ export default function AboutMe() {
       {
         translateX: 50,
         opacity: 0,
+        lazy: false,
       },
       {
         opacity: 1,
@@ -41,6 +43,7 @@ export default function AboutMe() {
       {
         translateX: 50,
         opacity: 0,
+        lazy: false,
       },
       {
         delay: 0.1,
@@ -59,6 +62,7 @@ export default function AboutMe() {
       {
         translateX: 50,
         opacity: 0,
+        lazy: false,
       },
       {
         delay: 0.2,
@@ -76,6 +80,7 @@ export default function AboutMe() {
       ".aboutKeyword span",
       {
         opacity: 0,
+        lazy: false,
       },
       {
         stagger: 0.1,
@@ -94,6 +99,7 @@ export default function AboutMe() {
       {
         translateY: -50,
         opacity: 0,
+        lazy: false,
       },
       {
         stagger: 0.03,
@@ -113,6 +119,7 @@ export default function AboutMe() {
       {
         translateY: -50,
         opacity: 0,
+        lazy: false,
       },
       {
         stagger: 0.03,
@@ -129,11 +136,11 @@ export default function AboutMe() {
   }, []);
 
   return (
-    <article className="bg-[#28292D] relative px-3 flex items-center py-20 aboutMeMain">
+    <article className="bg-[#28292D] relative px-3 min-h-screen flex items-center py-20 aboutMeMain">
       <section className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="flex justify-center">
           {/* 내 얼굴 */}
-          <div className="relative -mt-[20%] hover:drop-shadow-[0_0_5px_rgba(255,255,255,1)] duration-300 z-20">
+          <div className="relative -mt-0 sm:-mt-[20%] hover:drop-shadow-[0_0_5px_rgba(255,255,255,1)] duration-300 z-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="face w-[400px] md:w-[560px] max-w-full stroke-2 transition-all duration-[4s] ease-in-out"

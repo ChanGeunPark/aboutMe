@@ -3,8 +3,8 @@ import { gsap } from "gsap/dist/gsap";
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 const MyStory = () => {
-  gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
     gsap.fromTo(
       ".storyTitle i",

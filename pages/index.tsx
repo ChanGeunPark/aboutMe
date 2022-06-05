@@ -7,7 +7,6 @@ import CustomCursorManager from "../components/CustomCursor/context/manager";
 import Header from "../components/Header";
 import { Mainbanner3d } from "../components/Mainbanner3d";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 // Import Swiper styles
 
 import { portfolioData1, portfolioData2 } from "../data/portfolio";
@@ -19,12 +18,12 @@ import MyExperience from "../components/index/MyExperience";
 import MyStory from "../components/index/MyStory";
 import ContectMe from "../components/index/ContactMe";
 import Head from "next/head";
+import Headers from "../components/Headers";
 
 const Home: NextPage = () => {
   const scrollContainer = useRef(null);
   const smoothWrapper = useRef<any>(null);
   const smoothContent = useRef<any>(null);
-  gsap.registerPlugin(ScrollTrigger);
   const { setType } = useContext(CustomCursorContext);
   return (
     <div id="smooth-wrapper" ref={smoothWrapper}>
@@ -39,7 +38,7 @@ const Home: NextPage = () => {
         </Head>
         <CustomCursorManager>
           <CustomCursor />
-          <Header />
+          <Headers />
           <article
             id="mainBanner"
             className="h-screen w-full relative flex-col items-center justify-center bg-[#28292D] hidden md:flex"

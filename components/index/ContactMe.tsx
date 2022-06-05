@@ -1,7 +1,6 @@
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-
 interface RequestEmail {
   email: string;
   notes: string;

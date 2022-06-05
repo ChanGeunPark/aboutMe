@@ -20,9 +20,9 @@ import SwiperButtonPrev from "../SwipeButtonPrev";
 import SwiperButtonNext from "../SwipeButtonNext";
 import CustomCursorContext from "../CustomCursor/context/CustomCursorContext";
 
+gsap.registerPlugin(ScrollTrigger);
 export default function MyExperience() {
   const { setType } = useContext(CustomCursorContext);
-  gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
     gsap.to(".years", {

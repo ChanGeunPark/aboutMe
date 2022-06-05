@@ -1,15 +1,13 @@
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
-import CustomCursorContext from "./CustomCursor/context/CustomCursorContext";
 import { cls } from "../ilbs/utils";
+import CustomCursorContext from "./CustomCursor/context/CustomCursorContext";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-export default function Header() {
-  gsap.registerPlugin(ScrollTrigger);
-  //nextjs에선 build했을때 플러그인을 찾을수 없다. 버전 업그레이드 후 export밖으로 빼야한다.
-  gsap.registerPlugin(ScrollToPlugin);
+export default function Headers() {
   const { setType } = useContext(CustomCursorContext);
   const [open, setOpen] = useState(false); //메뉴오픈
   const menuOpen = () => {
@@ -67,10 +65,7 @@ export default function Header() {
         toggleClass: { targets: ".contactMeMenu", className: "active" },
       },
     });
-
-    //aboutMeMain
   }, []);
-
   const homeScroll = () => {
     gsap.to(window, {
       duration: 1.5,
@@ -240,8 +235,8 @@ export default function Header() {
       </section>
       <div
         className={cls(
-          "w-full sm:w-[450px] opacity-0 h-screen fixed right-0 top-0 bg-[#101010] p-12 flex items-center justify-start z-50 transition-all ease-in-out duration-500",
-          !open ? "-mr-[450px]" : "-mr-0 opacity-100"
+          "w-full sm:w-[450px] opacity-0 h-screen fixed right-0 top-0 bg-[#101010] p-12 flex items-center justify-start z-50 transition-all ease-in-out duration-500 -mr-[450px]",
+          open ? "-mr-0 opacity-100" : ""
         )}
       >
         <button
@@ -280,7 +275,7 @@ export default function Header() {
             onMouseLeave={() => {
               setType("default");
             }}
-            className="homeMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left active"
+            className="homeMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left"
           >
             HOME
           </button>
@@ -341,12 +336,12 @@ export default function Header() {
       </div>
 
       <style>{`
-      .menus button.active{
-        padding:10px;
-        background-color: #ff9800;
-        color:#0f0f0f;
-      }
-      `}</style>
+  .menus button.active{
+    padding:10px;
+    background-color: #ff9800;
+    color:#0f0f0f;
+  }
+  `}</style>
     </div>
   );
 }
