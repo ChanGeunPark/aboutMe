@@ -4,16 +4,16 @@ import CustomCursorContext from "./CustomCursor/context/CustomCursorContext";
 import { cls } from "../ilbs/utils";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
 export default function Header() {
   const { setType } = useContext(CustomCursorContext);
-  const executeScroll = () => {};
   const [open, setOpen] = useState(false); //메뉴오픈
   const menuOpen = () => {
     open ? setOpen(false) : setOpen(true);
   };
 
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
   useEffect(() => {
     gsap.to(".homeMenu", {
       scrollTrigger: {
@@ -69,11 +69,51 @@ export default function Header() {
     //aboutMeMain
   }, []);
 
+  const homeScroll = () => {
+    gsap.to(window, {
+      duration: 1.5,
+      ease: "power3.out",
+      scrollTo: 0,
+    });
+  };
+
+  const aboutMeScroll = () => {
+    gsap.to(window, {
+      duration: 1.5,
+      ease: "power3.out",
+      scrollTo: ".aboutMeMain",
+    });
+  };
+
+  const experienceScroll = () => {
+    gsap.to(window, {
+      duration: 1.5,
+      ease: "power3.out",
+      scrollTo: ".experienceMain",
+    });
+  };
+
+  const storyScroll = () => {
+    gsap.to(window, {
+      duration: 1.5,
+      ease: "power3.out",
+      scrollTo: ".storyMain",
+    });
+  };
+
+  const contactMeScroll = () => {
+    gsap.to(window, {
+      duration: 1.5,
+      ease: "power3.out",
+      scrollTo: "#contactMeMain",
+    });
+  };
+
   return (
     <div className="w-full top-0 left-0 z-50 px-3 fixed h-0">
       <section className="container flex items-center h-[80px] mx-auto justify-between relative z-50">
         <h1
-          className="text-3xl text-white flex items-center mainLogo"
+          className="text-3xl text-white flex c items-center mainLogo"
           onMouseOver={() => {
             setType("link");
           }}
@@ -164,7 +204,7 @@ export default function Header() {
             </svg>
             {/* LOGO */}
           </Link>
-          <span className="text-white text-sm font-normal ml-16 opacity-60 translate-y-1">
+          <span className="text-white text-sm font-normal ml-16 opacity-60 translate-y-1 hidden sm:block">
             010-8668-8918 / design795@naver.com
           </span>
         </h1>
@@ -198,7 +238,7 @@ export default function Header() {
       </section>
       <div
         className={cls(
-          "w-[450px] h-screen fixed right-0 top-0 bg-[#101010] p-12 flex items-center justify-start z-50 transition-all ease-in-out duration-500",
+          "w-full sm:w-[450px] h-screen fixed right-0 top-0 bg-[#101010] p-12 flex items-center justify-start z-50 transition-all ease-in-out duration-500",
           !open ? "-mr-[450px]" : "-mr-0"
         )}
       >
@@ -231,21 +271,63 @@ export default function Header() {
 
         <nav className="w-full grid grid-cols-1 text-left space-y-6 menus">
           <button
-            onClick={executeScroll}
+            onClick={homeScroll}
+            onMouseOver={() => {
+              setType("link");
+            }}
+            onMouseLeave={() => {
+              setType("default");
+            }}
             className="homeMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left active"
           >
             HOME
           </button>
-          <button className="aboutMeMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left">
+          <button
+            onClick={aboutMeScroll}
+            onMouseOver={() => {
+              setType("link");
+            }}
+            onMouseLeave={() => {
+              setType("default");
+            }}
+            className="aboutMeMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left"
+          >
             AOUBT ME
           </button>
-          <button className="experienceMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left">
+          <button
+            onClick={experienceScroll}
+            onMouseOver={() => {
+              setType("link");
+            }}
+            onMouseLeave={() => {
+              setType("default");
+            }}
+            className="experienceMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left"
+          >
             EXPERIENCE
           </button>
-          <button className="storyMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left">
+          <button
+            onClick={storyScroll}
+            onMouseOver={() => {
+              setType("link");
+            }}
+            onMouseLeave={() => {
+              setType("default");
+            }}
+            className="storyMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left"
+          >
             STORY
           </button>
-          <button className="contactMeMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left">
+          <button
+            onClick={contactMeScroll}
+            onMouseOver={() => {
+              setType("link");
+            }}
+            onMouseLeave={() => {
+              setType("default");
+            }}
+            className="contactMeMenu text-3xl font-bold text-zinc-300 hover:text-orange-400 transition-all duration-500 text-left"
+          >
             CONTACT ME
           </button>
         </nav>

@@ -1,18 +1,27 @@
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css/grid";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 import "swiper/css";
 import "swiper/css/effect-creative";
 import { gsap } from "gsap/dist/gsap";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-import { Grid, Pagination, Navigation, EffectCreative } from "swiper";
+import swiperCore, {
+  Grid,
+  Pagination,
+  Navigation,
+  EffectCreative,
+} from "swiper";
 import { experience } from "../../data/myexperience";
 import Link from "next/link";
+import SwiperButtonPrev from "../SwipeButtonPrev";
+import SwiperButtonNext from "../SwipeButtonNext";
+import CustomCursorContext from "../CustomCursor/context/CustomCursorContext";
 
 export default function MyExperience() {
+  const { setType } = useContext(CustomCursorContext);
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
@@ -192,7 +201,6 @@ export default function MyExperience() {
       }
     ); //experienceLink
   }, []);
-
   return (
     <article className="min-h-screen py-20 bg-[#28292D] relative px-3 flex items-center experienceMain">
       <section className="container mx-auto flex flex-col lg:flex-row">
@@ -211,59 +219,14 @@ export default function MyExperience() {
         </div>
         {/* left layout */}
         <div className="w-full lg:w-[calc(100%-200px)]">
-          <div className="text-[#FFEEEE] font-extrabold text-4xl md:text-6xl relative flex justify-between items-center">
-            <div className="flex items-center experienceTitle">
-              <span className="text-[#28292D] about">MY</span>
-              <span className="ml-3">EXPERIENCE</span>
-
-              <span className="inline-block w-3 h-3 bg-white self-end rounded-full ml-2 -translate-y-2"></span>
-            </div>
-
-            <div className="text-white font-normal text-sm hidden sm:flex sm:flex-col lg:flex-row items-center space-x-2">
-              <button>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="58.433"
-                  height="11.87"
-                  viewBox="0 0 58.433 11.87"
-                  className="-translate-y-1/2 stroke-zinc-500"
-                >
-                  <path
-                    id="leftBtn"
-                    data-name="leftBtn"
-                    d="M1612.48,2023h57.226l-11.016,11.016"
-                    transform="translate(1670.913 2034.37) rotate(180)"
-                    fill="none"
-                    strokeWidth="1"
-                  />
-                </svg>
-              </button>
-              <span className="text-lg text-zinc-400">
-                1 / {experience.length}
-              </span>
-              <button>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="58.433"
-                  height="11.87"
-                  viewBox="0 0 58.433 11.87"
-                  className="translate-y-1/2 stroke-zinc-500"
-                >
-                  <path
-                    id="rightBtn"
-                    data-name="rightBtn"
-                    d="M1612.48,2023h57.226l-11.016,11.016"
-                    transform="translate(-1612.48 -2022.5)"
-                    fill="none"
-                    strokeWidth="1"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div className="mt-16">
+          <div>
             <>
               <Swiper
+                pagination={{
+                  type: "fraction",
+                  el: ".pagination_bullet",
+                  clickable: true,
+                }}
                 slidesPerView={1}
                 spaceBetween={30}
                 effect={"creative"}
@@ -278,13 +241,60 @@ export default function MyExperience() {
                   },
                 }}
                 loop={true}
-                pagination={{
-                  clickable: true,
-                }}
                 //navigation={true}
-                modules={[EffectCreative]}
-                className="myExperience"
+                modules={[EffectCreative, Pagination]}
+                className="myExperience !pt-28"
               >
+                <div className="text-[#FFEEEE] font-extrabold text-4xl md:text-6xl flex justify-between items-center absolute top-0 left-0">
+                  <div className="flex items-center experienceTitle">
+                    <span className="text-[#28292D] about">MY</span>
+                    <span className="ml-3">EXPERIENCE</span>
+
+                    <span className="inline-block w-3 h-3 bg-white self-end rounded-full ml-2 -translate-y-2"></span>
+                  </div>
+                </div>
+                <div className="text-white font-normal text-sm hidden sm:flex sm:flex-col lg:flex-row items-center space-x-2 absolute top-3 right-0">
+                  <SwiperButtonPrev>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="58.433"
+                      height="11.87"
+                      viewBox="0 0 58.433 11.87"
+                      className="-translate-y-1/2 stroke-zinc-500"
+                    >
+                      <path
+                        id="leftBtn"
+                        data-name="leftBtn"
+                        d="M1612.48,2023h57.226l-11.016,11.016"
+                        transform="translate(1670.913 2034.37) rotate(180)"
+                        fill="none"
+                        strokeWidth="1"
+                      />
+                    </svg>
+                  </SwiperButtonPrev>
+                  <span className="pagination_bullet text-lg text-zinc-400 w-[40px] text-center">
+                    {/* pagenation */}
+                  </span>
+                  <SwiperButtonNext>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="58.433"
+                      height="11.87"
+                      viewBox="0 0 58.433 11.87"
+                      className="translate-y-1/2 stroke-zinc-500"
+                    >
+                      <path
+                        id="rightBtn"
+                        data-name="rightBtn"
+                        d="M1612.48,2023h57.226l-11.016,11.016"
+                        transform="translate(-1612.48 -2022.5)"
+                        fill="none"
+                        strokeWidth="1"
+                      />
+                    </svg>
+                  </SwiperButtonNext>
+                </div>
+                {/* navigation */}
                 {experience.map((experience, index) => (
                   <SwiperSlide key={index}>
                     <div className="w-full grid grid-cols-1 md:grid-cols-6 gap-6 rounded pb-9 border-b border-zinc-500">
@@ -311,12 +321,36 @@ export default function MyExperience() {
                         </p>
                         <div className="text-white space-x-9 mt-10 absolute left-0 bottom-0 expLink1">
                           {experience.siteUrl1 ? (
-                            <Link href={experience.siteUrl1}>VIEW SITE +</Link>
+                            <Link href={experience.siteUrl1}>
+                              <a
+                                onMouseOver={() => {
+                                  setType("link");
+                                }}
+                                onMouseLeave={() => {
+                                  setType("default");
+                                }}
+                                target="_blank"
+                              >
+                                VIEW SITE +
+                              </a>
+                            </Link>
                           ) : (
                             ""
                           )}
                           {experience.githubUrl1 ? (
-                            <Link href={experience.githubUrl1}>GITHUB +</Link>
+                            <Link href={experience.githubUrl1} target="_blank">
+                              <a
+                                onMouseOver={() => {
+                                  setType("link");
+                                }}
+                                onMouseLeave={() => {
+                                  setType("default");
+                                }}
+                                target="_blank"
+                              >
+                                GITHUB +
+                              </a>
+                            </Link>
                           ) : (
                             ""
                           )}
@@ -348,12 +382,36 @@ export default function MyExperience() {
                         </p>
                         <div className="text-white space-x-9 mt-10 absolute left-0 bottom-0 expLink2">
                           {experience.siteUrl2 ? (
-                            <Link href={experience.siteUrl2}>VIEW SITE +</Link>
+                            <Link href={experience.siteUrl2} target="_blank">
+                              <a
+                                onMouseOver={() => {
+                                  setType("link");
+                                }}
+                                onMouseLeave={() => {
+                                  setType("default");
+                                }}
+                                target="_blank"
+                              >
+                                VIEW SITE +
+                              </a>
+                            </Link>
                           ) : (
                             ""
                           )}
                           {experience.githubUrl2 ? (
-                            <Link href={experience.githubUrl2}>GITHUB +</Link>
+                            <Link href={experience.githubUrl2} target="_blank">
+                              <a
+                                onMouseOver={() => {
+                                  setType("link");
+                                }}
+                                onMouseLeave={() => {
+                                  setType("default");
+                                }}
+                                target="_blank"
+                              >
+                                GITHUB +
+                              </a>
+                            </Link>
                           ) : (
                             ""
                           )}
