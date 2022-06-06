@@ -7,7 +7,7 @@ export let experience = [
     days1: "2022-05",
     intro1:
       "어머니의 취미인 다육이 사업을 돕기위해 Next.js를 활용한 다육이 쇼핑몰을 기획, 디자인, 개발까지 진행하고 있습니다. 3d를 활용하여 더욱 사용자랑 소통하고 재미를 줄 수 있도록 현재까지도 개발을 진행중에 있습니다.",
-    siteUrl1: null,
+    siteUrl1: "https://dodory-changeunpark.vercel.app/",
     githubUrl1: "https://github.com/ChanGeunPark/dodory",
 
     imgUrl2:
