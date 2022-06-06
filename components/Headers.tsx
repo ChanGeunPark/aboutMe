@@ -15,6 +15,7 @@ export default function Headers() {
   };
 
   useEffect(() => {
+    /* 
     gsap.to(".homeMenu", {
       scrollTrigger: {
         trigger: "#mainBanner",
@@ -65,6 +66,7 @@ export default function Headers() {
         toggleClass: { targets: ".contactMeMenu", className: "active" },
       },
     });
+    */
   }, []);
   const homeScroll = () => {
     gsap.to(window, {
