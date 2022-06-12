@@ -117,7 +117,7 @@ export default function ContectMe() {
       </div>
 
       <div className="absolute left-1/2 -translate-x-1/2 bottom-3 text-zinc-300 text-center resize-none">
-        <span>010-8668-8918</span> / <span>design795@naver.com</span>
+        <span>design795@naver.com</span>
       </div>
     </article>
   );

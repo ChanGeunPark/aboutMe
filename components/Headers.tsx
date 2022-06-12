@@ -204,7 +204,7 @@ export default function Headers() {
             {/* LOGO */}
           </Link>
           <span className="text-white text-sm font-normal ml-16 opacity-60 translate-y-1 hidden sm:block">
-            010-8668-8918 / design795@naver.com
+            design795@naver.com
           </span>
         </h1>
 
