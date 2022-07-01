@@ -17,7 +17,7 @@ export let experience = [
     days2: "2022-05",
     intro2:
       "Eduedu 회사의 사이트 리뉴얼. 기존의 정형화된 틀을 벗어나 인터렉티브한 배너와 레이아웃으로 지루함 없이 에듀에듀의 플랫폼을 설명해주고 있다. 기존의 교육 위주의 사이트에서 조금더 확장성 있는 플랫폼을 설명해주려고 기획했다.",
-    siteUrl2: "https://www.eduedu.kr/theme/edu/",
+    siteUrl2: "https://www.eduedu.kr",
     githubUrl2: null,
   },
   {
